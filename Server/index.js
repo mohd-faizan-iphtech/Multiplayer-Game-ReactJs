@@ -8,10 +8,10 @@ const server = http.createServer(app);
 const PORT = 3001;
 
 const io = new Server(server, {
-  // cors: {
+  cors: {
     // origin: "http://localhost:3000"|| "http://localhost:3001"||"http://localhost:3002"||"http://localhost:3004",
-    // methods: ["GET", "POST"],
-  // },
+    methods: ["GET", "POST"],
+  },
 });
 
 io.on("connection", (socket) => {

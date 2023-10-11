@@ -77,5 +77,4 @@ function Button({ socket, username, room }) {
     </div>
   );
 }
-
 export default Button;
