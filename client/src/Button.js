@@ -1,13 +1,5 @@
 import React, { useEffect, useState } from "react";
 import ScrollToBottom from "react-scroll-to-bottom";
-<<<<<<< Updated upstream
-import { Icon } from '@iconify/react';
-
-function Button({ socket, username, room }) {
-  const [currentMessage, setCurrentMessage] = useState("");
-  const [messageList, setMessageList] = useState([]);
-  const [buttonEnable,setButtonEnable]=useState(false)
-=======
 import { Icon } from "@iconify/react";
 import ReactiveButton from "reactive-button";
 
@@ -26,7 +18,6 @@ function Button({ socket, username, room }) {
       setState('success');
     }, 500);
   };
->>>>>>> Stashed changes
 
   const sendMessage = async () => {
     setButtonEnable(true);
@@ -55,14 +46,6 @@ function Button({ socket, username, room }) {
   }, [socket]);
 
   return (
-<<<<<<< Updated upstream
-    
-        <button className="btn btn-success" onClick={sendMessage} disabled={buttonEnable}> Click</button> 
-  );
-}
-
-export default BUtton;
-=======
     <div className="container p-5">
       <div class="card text-center shaow">
         <div class="card-header ">Game</div>
@@ -96,4 +79,3 @@ export default BUtton;
 }
 
 export default Button;
->>>>>>> Stashed changes
