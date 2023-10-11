@@ -4,14 +4,14 @@ const http = require("http");
 const cors = require("cors");
 const { Server } = require("socket.io");
 app.use(cors());
-
 const server = http.createServer(app);
+const PORT = 3001;
 
 const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:3000",
-    methods: ["GET", "POST"],
-  },
+  // cors: {
+    // origin: "http://localhost:3000"|| "http://localhost:3001"||"http://localhost:3002"||"http://localhost:3004",
+    // methods: ["GET", "POST"],
+  // },
 });
 
 io.on("connection", (socket) => {
@@ -31,6 +31,6 @@ io.on("connection", (socket) => {
   });
 });
 
-server.listen(3001, () => {
-  console.log("SERVER RUNNING");
+server.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

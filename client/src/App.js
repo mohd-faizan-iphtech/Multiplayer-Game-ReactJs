@@ -1,7 +1,8 @@
 import "./App.css";
 import io from "socket.io-client";
-import { useState } from "react";
+import { useState,useCallback } from "react";
 import Button from "./Button";
+
 
 const socket = io.connect("http://localhost:3001");
 
@@ -16,12 +17,21 @@ function App() {
       setGoInside(true);
     }
   };
-  return (
 
-    <div className="App">
+ 
+
+  return (
+    <div className="container">
+    <div className="row" style={{height:"100vh"}}>
       {!goInside ? (
-        <div className="joinChatContainer">
-          <h3>Multiplayer Game</h3>
+        <>
+        <div className="col-md-6 col-sm-12 d-flex justify-content-center align-items-center hidemobile">
+          <img src="image/sideimage.png" className="img-fluid"/>
+        </div>
+        <div className="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
+        <div className="joinChatContainer border-0 card shadow p-5" >
+          <h3 className="mb-3">Multiplayer Game</h3>
+          <hr className="mt-0" style={{width:"100%", color:"green"}}/>
           <input
             type="text"
             placeholder="Your Name"
@@ -38,9 +48,12 @@ function App() {
           />
           <button onClick={joinRoom}>Join</button>
         </div>
+        </div>
+        </>
       ) : (
         <Button socket={socket} username={username} room={room} />
       )}
+    </div>
     </div>
   );
 }
