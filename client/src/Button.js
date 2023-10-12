@@ -62,7 +62,7 @@ function Button({ socket, username, room }) {
 
   return (
     <div className="container p-5 ">
- <div> Room : {NumberofUser}</div>
+ <div> <b>Room : </b>{NumberofUser}</div>
       <div
         className="d-flex justify-content-between "
         // style={{
@@ -72,11 +72,11 @@ function Button({ socket, username, room }) {
         //   justifyContent: "space-between",
         // }}
       >
-        <div> Room Id: {roomId}</div>
-        <div> OnlinePlayers : {onlinePlayers}</div>
+        <div> <b>Room Id: </b>{roomId}</div>
+        <div> <b>OnlinePlayers : </b>{onlinePlayers}</div>
       </div>
       <div class="card text-center shaow">
-        <div class="card-header "> Hi {username}</div>
+        <div class="card-header "> Hi 👋,  <b>{username}</b></div>
         <div class="card-body">
           <h5 class="card-title">
             {!buttonEnable ? `Your Turn` : "waiting for opponent's Turn"}
