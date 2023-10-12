@@ -4,6 +4,8 @@ import { Icon } from "@iconify/react";
 import ReactiveButton from "reactive-button";
 
 function Button({ socket, username, room }) {
+  const NumberofUser = localStorage.getItem("usercount");
+  const onlinePlayers = localStorage.getItem("onlinePlayers");
   const [currentMessage, setCurrentMessage] = useState("");
   // const [messageList, setMessageList] = useState([]);
   const [buttonEnable, setButtonEnable] = useState(false);
@@ -15,7 +17,7 @@ function Button({ socket, username, room }) {
     sendMessage();
     // send an HTTP request
     setTimeout(() => {
-      setState('success');
+      setState("success");
     }, 500);
   };
 
@@ -37,37 +39,47 @@ function Button({ socket, username, room }) {
     // setCurrentMessage("");
   };
 
+  // useEffect(() => {
+  //   socket.on("receive_message", (data) => {
+  //     setButtonEnable(data.buttonEnable);
+  //     // setMessageList((list) => [...list, data]);
+  //     setUserDetails(data);
+  //   });
+  // }, [socket]);
   useEffect(() => {
-    socket.on("receive_message", (data) => {
+    // socket.on("receive_message", (data) => {
+    //   setButtonEnable(data.buttonEnable);
+    //   setUserDetails(data);
+    // });
+
+    socket.on("enable_button", (data) => {
+      console.log("setButtonEnable(true);", data);
       setButtonEnable(data.buttonEnable);
-      // setMessageList((list) => [...list, data]);
-      setUserDetails(data);
     });
   }, [socket]);
 
+  console.log(userDetails);
+
   return (
-    <div className="container p-5">
+    <div className="container p-5 ">
+      <div className="d-flex justify-content-between ">
+        <div> Room : {NumberofUser}</div>
+        <div> OnlinePlayers : {onlinePlayers}</div>
+      </div>
       <div class="card text-center shaow">
-        <div class="card-header ">Game</div>
+        <div class="card-header "> Hi {username}</div>
         <div class="card-body">
           <h5 class="card-title">
-            {!buttonEnable
-              ? `Your Turn`
-              : `${
-                  userDetails?.author
-                    ? userDetails?.author
-                    : "waiting for opponent's"
-                } Turn`}
+            {!buttonEnable ? `Your Turn` : "waiting for opponent's Turn"}
           </h5>
           <p class="card-text"> </p>
           <ReactiveButton
-          color="green" 
+            color="green"
             buttonState={state}
             idleText="Submit"
             loadingText="Loading"
             successText="Done"
             onClick={onClickHandler}
-
             style={{ borderRadius: 10 }}
             disabled={buttonEnable}
           />
