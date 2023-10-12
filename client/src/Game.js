@@ -7,7 +7,7 @@ const socket = io.connect("http://localhost:3001");
 
 export default function Game() {
   const { state } = useLocation();
-console.log(state)
+
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [goInside, setGoInside] = useState(false);
@@ -43,7 +43,7 @@ console.log(state)
     if (username !== "" && room !== "") {
       socket.emit("join_room", room);
       setGoInside(true);
-      localStorage.setItem("roomId",room)
+      localStorage.setItem('roomId')
     }
   };
 
@@ -85,8 +85,8 @@ console.log(state)
                     setRoom(event.target.value);
                   }}
                 />
-                {state?.join !==true &&<button onClick={randomRoomId}>Generate Room Id</button>}
-                 <button onClick={joinRoom}>Join</button>
+                {state?.join !== true && <button onClick={randomRoomId}>Generate Room Id</button>}
+                <button onClick={joinRoom}>Join</button>
               </div>
             </div>
           </>
