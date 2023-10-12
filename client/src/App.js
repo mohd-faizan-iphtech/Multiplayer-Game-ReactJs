@@ -52,47 +52,6 @@ function App() {
   };
 
   return (
-<<<<<<< Updated upstream
-    <div className="container">
-      <div className="row" style={{ height: "100vh" }}>
-        {!goInside ? (
-          <>
-            <div className="col-md-6 col-sm-12 d-flex justify-content-center align-items-center hidemobile">
-              <img src="image/sideimage.png" className="img-fluid" />
-            </div>
-            <div className="col-md-6 col-sm-12 d-flex justify-content-center align-items-center">
-              <div className="joinChatContainer border-0 card shadow p-5">
-                <h3 className="mb-3">Multiplayer Game</h3>
-                <hr
-                  className="mt-0"
-                  style={{ width: "100%", color: "green" }}
-                />
-                <input
-                  type="text"
-                  placeholder="Your Name"
-                  onChange={(event) => {
-                    setUsername(event.target.value);
-                  }}
-                />
-                <input
-                  value={room}
-                  type="text"
-                  placeholder="Room ID"
-                  onChange={(event) => {
-                    setRoom(event.target.value);
-                  }}
-                />
-                <button onClick={randomRoomId}>Generate Room Id</button>
-                <button onClick={joinRoom}>Join</button>
-              </div>
-            </div>
-          </>
-        ) : (
-          <Button socket={socket} username={username} room={room} />
-        )}
-      </div>
-    </div>
-=======
 
     <>
 
@@ -103,7 +62,6 @@ function App() {
       </Routes>
     </BrowserRouter>
     </>
->>>>>>> Stashed changes
   );
 }
 
