@@ -6,6 +6,8 @@ import ReactiveButton from "reactive-button";
 function Button({ socket, username, room }) {
   const NumberofUser = localStorage.getItem("usercount");
   const onlinePlayers = localStorage.getItem("onlinePlayers");
+  const roomId = localStorage.getItem("roomId");
+
   const [currentMessage, setCurrentMessage] = useState("");
   // const [messageList, setMessageList] = useState([]);
   const [buttonEnable, setButtonEnable] = useState(false);
@@ -62,8 +64,11 @@ function Button({ socket, username, room }) {
 
   return (
     <div className="container p-5 ">
+            <div> Room : {NumberofUser}</div>
+
       <div className="d-flex justify-content-between ">
-        <div> Room : {NumberofUser}</div>
+        <div> Room ID : {roomId}</div>
+
         <div> OnlinePlayers : {onlinePlayers}</div>
       </div>
       <div class="card text-center shaow">

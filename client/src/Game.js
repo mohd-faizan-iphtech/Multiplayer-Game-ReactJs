@@ -1,11 +1,13 @@
-import "./App.css";
+import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
-import { useEffect, useState } from "react";
 import Button from "./Button";
+import { useLocation } from "react-router-dom";
 
 const socket = io.connect("http://localhost:3001");
 
-function App() {
+export default function Game() {
+  const { state } = useLocation();
+console.log(state)
   const [username, setUsername] = useState("");
   const [room, setRoom] = useState("");
   const [goInside, setGoInside] = useState(false);
@@ -41,6 +43,7 @@ function App() {
     if (username !== "" && room !== "") {
       socket.emit("join_room", room);
       setGoInside(true);
+      localStorage.setItem("roomId",room)
     }
   };
 
@@ -51,8 +54,8 @@ function App() {
     setRoom(demo);
   };
 
+
   return (
-<<<<<<< Updated upstream
     <div className="container">
       <div className="row" style={{ height: "100vh" }}>
         {!goInside ? (
@@ -82,8 +85,8 @@ function App() {
                     setRoom(event.target.value);
                   }}
                 />
-                <button onClick={randomRoomId}>Generate Room Id</button>
-                <button onClick={joinRoom}>Join</button>
+                {state?.join !==true &&<button onClick={randomRoomId}>Generate Room Id</button>}
+                 <button onClick={joinRoom}>Join</button>
               </div>
             </div>
           </>
@@ -92,19 +95,5 @@ function App() {
         )}
       </div>
     </div>
-=======
-
-    <>
-
-  <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<CreateGames/>}/>
-        <Route path="/Game" element={<Game />} />
-      </Routes>
-    </BrowserRouter>
-    </>
->>>>>>> Stashed changes
   );
 }
-
-export default App;
