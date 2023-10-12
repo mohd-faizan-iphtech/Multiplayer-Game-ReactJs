@@ -41,6 +41,7 @@ function App() {
     if (username !== "" && room !== "") {
       socket.emit("join_room", room);
       setGoInside(true);
+      localStorage.setItem('roomId',room)
     }
   };
 

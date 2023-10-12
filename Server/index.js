@@ -21,7 +21,6 @@ const playerStatus = {};
 
 io.on("connection", (socket) => {
   console.log(`User Connected: ${socket.id}`);
-
   socket.on("join_room", (data) => {
     socket.join(data);
     players.push({ id: socket.id, room: data });
@@ -57,7 +56,6 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     console.log("User Disconnected", socket.id);
-
     const index = players.findIndex((player) => player.id === socket.id);
     if (index !== -1) {
       players.splice(index, 1);
